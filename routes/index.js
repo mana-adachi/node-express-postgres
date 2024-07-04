@@ -2,25 +2,20 @@ const express = require('express');
 const router = express.Router();
 const pg = require('pg');
 
-let todos = [];
-
-
-const connection = new pg.Pool({
+const connection =  new pg.Pool({
   host: 'localhost',
   user: 'root',
   password: 'postgres',
   database: 'todo_app',
   port: 5432,
-  });
+});
 
-
-  console.log(results.rows)
-  {
+router.get('/', function (req, res, next) {
   res.render('index', {
     title: 'ToDo App',
-    todos: results.rows;
+    todos: todos,
   });
-};
+});
 
 router.post('/', function (req, res, next) {
   connection.connect((err) => {
@@ -31,7 +26,13 @@ router.post('/', function (req, res, next) {
     console.log('success');
   });
   const todo = req.body.add;
-  res.redirect('/');
+  connection.query(
+    `insert into tasks (user_id, content) values (1, '${todo}');`,
+    (error, results) => {
+      console.log(error);
+      res.redirect('/');
+    }
+  );
 });
 
 module.exports = router;
