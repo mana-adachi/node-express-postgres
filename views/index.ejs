@@ -86,8 +86,7 @@
             <% for(let todo of todos){ %>
               <li class="list-group-item d-flex justify-content-between align-items-center">
                 <%= todo.content %>
-                <button class="btn btn-primary btn-sm badge-pill">Done</button>
-
+                <button class="btn btn-primary btn-sm badge-pill delete-btn" data-task-id="<%= todo.id %>">Done</button>
               </li>
             <% } %>
           </ul>
@@ -109,5 +108,30 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
           integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
           crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const deleteButtons = document.querySelectorAll('.delete-btn');
+
+      deleteButtons.forEach(button => {
+        button.addEventListener('click', async (event) => {
+          const taskId = event.target.dataset.taskId;
+
+          try {
+            const response = await fetch(`/tasks/${taskId}`, {
+              method: 'DELETE',
+            });
+
+            if (response.ok) {
+              window.location.reload();
+            } else {
+              console.error('Failed to delete task');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

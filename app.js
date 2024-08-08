@@ -38,6 +38,16 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.delete('/tasks/:id', async (req, res) => {
+  try {
+    const taskId = req.params.id;
+    await knex('tasks').where('id', taskId).del(); // tasksテーブルから該当IDのタスクを削除
+    res.status(200).send({ message: 'Task deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: 'Failed to delete task' });
+  }
+});
 
 
 module.exports = app;
