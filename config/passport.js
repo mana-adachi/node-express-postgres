@@ -8,10 +8,12 @@ const secret = "secretCuisine123";
 
 module.exports = function (app) {
   passport.serializeUser(function (user, done) {
+    console.log("serializeUser");
     done(null, user.id);
   });
 
   passport.deserializeUser(async function (id, done) {
+    console.log("deserializeUser");
     try {
       const user = await User.findById(id);
       done(null, user);
@@ -44,14 +46,14 @@ module.exports = function (app) {
         });
     }
   ));
-  
+
   app.use(
     cookieSession({
       name: "session",
       keys: [secret],
 
       // Cookie Options
-      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      maxAge: 24 * 60 * 60 * 1000,// 24 hours
     })
   );
   app.use(passport.initialize());

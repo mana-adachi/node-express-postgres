@@ -2,43 +2,44 @@
 <html>
 <head>
   <title><%= title %></title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
   <%- include('./error_messages'); %>
   <%- include('./header'); %>
   <% if(isAuth) { %>
-    <div class="container">
+    <div class="container mt-5">
       <div class="row">
         <div class="col-md-6">
-          <form action="/" method="post">
-            <label>タスクの追加</label>
-            <input required type="text" name="add" placeholder="何をする?"/>
-            <input type="submit" value="追加"/>
+          <form action="/" method="post" class="p-4 rounded shadow-sm bg-light">
+            <h2 class="mb-4">タスクの追加</h2>
+            <div class="form-group">
+              <input required type="text" name="add" class="form-control" placeholder="何をする?" />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">追加</button>
           </form>
         </div>
         <div class="col-md-6">
-          <ul>
+          <ul class="list-group">
             <% for(let todo of todos){ %>
-              <li><span><%= todo.content %></span></li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <%= todo.content %>
+                <span class="badge badge-primary badge-pill">Done</span>
+              </li>
             <% } %>
           </ul>
         </div>
       </div>
     </div>
   <% } else { %>
-    <h1>Welcome to the TodoApp</h1>
-    <a class="btn btn-primary" href="/signup" role="button">Sign up now!</a>
+    <div class="text-center mt-5">
+      <h1 class="mb-4">Welcome to the dream TodoApp for you!</h1>
+      <a class="btn btn-primary btn-lg" href="/signup" role="button">Sign up now!</a>
+    </div>
   <% } %>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-          crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-          integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-          crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-          integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-          crossorigin="anonymous"></script>
-  </body>
+  <script src="js/jquery-3.3.1.slim.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
 </html>
