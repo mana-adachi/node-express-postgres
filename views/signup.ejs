@@ -4,22 +4,79 @@
   <title><%= title %></title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <style>
+    body {
+      background: url('https://p4.wallpaperbetter.com/wallpaper/334/120/932/art-mushrooms-mushroom-mushroom-house-wallpaper-preview.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #343a40;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      padding: 30px;
+      margin-top: 100px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+    }
+    form label {
+      font-weight: bold;
+    }
+    form input[type="text"], form input[type="password"] {
+      border-radius: 5px;
+      border: 1px solid #ced4da;
+      padding: 10px;
+      margin-bottom: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    form input[type="submit"] {
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+    form input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .error-message {
+      color: #dc3545;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 <%- include('./header'); %>
 <%- include('./error_messages'); %>
 <div class="container">
+  <h2>Sign Up</h2>
   <form action="/signup" method="post">
-    <label>ユーザ名</label>
-    <input required type="text" name="username"/>
-    <br>
-    <label>パスワード</label>
-    <input required type="password" name="password"/>
-    <br>
-    <label>パスワード再入力</label>
-    <input required type="text" name="repassword"/>
-    <br>
-    <input type="submit" value="Sign up"/>
+    <div class="form-group">
+      <label for="username">ユーザ名</label>
+      <input id="username" required type="text" name="username" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="password">パスワード</label>
+      <input id="password" required type="password" name="password" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="repassword">パスワード再入力</label>
+      <input id="repassword" required type="password" name="repassword" class="form-control"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign up</button>
   </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

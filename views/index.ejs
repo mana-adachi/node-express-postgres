@@ -1,9 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= title %></title>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/custom.css">
+  <title>TODO APP</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <style>
+    body {
+      background: url('https://p4.wallpaperbetter.com/wallpaper/265/316/905/digital-digital-art-artwork-women-fantasy-girl-hd-wallpaper-preview.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #343a40;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 350px; /* ここで上部のマージンを設定 */
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    form label {
+      font-weight: bold;
+    }
+    form input[type="text"] {
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    form input[type="submit"] {
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    ul li {
+      background-color: #ffffff;
+      padding: 10px;
+      border: 1px solid #dee2e6;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    ul li span {
+      flex-grow: 1;
+    }
+    .badge {
+      width: auto; /* 自動幅設定 */
+      max-width: 80px; /* 幅を制限 */
+    }
+  </style>
 </head>
 <body>
   <%- include('./error_messages'); %>
@@ -33,13 +94,19 @@
       </div>
     </div>
   <% } else { %>
-    <div class="text-center mt-5">
-      <h1 class="mb-4">Welcome to the dream TodoApp for you!</h1>
-      <a class="btn btn-primary btn-lg" href="/signup" role="button">Sign up now!</a>
+    <div class="container text-center">
+      <h1>Welcome to the dream TodoApp for you!</h1>
+      <a class="btn btn-primary" href="/signup" role="button">Sign up now!</a>
     </div>
   <% } %>
-  <script src="js/jquery-3.3.1.slim.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+          integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+          integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+          crossorigin="anonymous"></script>
 </body>
 </html>
